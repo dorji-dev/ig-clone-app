@@ -1,9 +1,13 @@
-"use client"
+import SignIn from "@component/auth/sign-in";
+import { Metadata } from "next";
 
-const SignIn = () => {
-  return (
-    <div>SignIn</div>
-  )
-}
+export const metadata: Metadata = {
+  title: "Login",
+  description: "Login to get the best of social media",
+};
 
-export default SignIn
+const SignInPage = () => {
+  return <SignIn />;
+};
+
+export default SignInPage;
