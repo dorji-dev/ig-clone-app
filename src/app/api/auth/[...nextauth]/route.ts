@@ -21,6 +21,7 @@ export const authOptions: NextAuthOptions = {
 };
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  // custom logic before handling request to next-auth
   return await NextAuth(req, res, authOptions);
 };
 

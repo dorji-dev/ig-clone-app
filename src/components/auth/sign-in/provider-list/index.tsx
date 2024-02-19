@@ -1,6 +1,7 @@
 "use client";
 
 import { NextAuthProviders } from "@lib/data";
+import { Button } from "antd";
 import { signIn as SignIntoProvider } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { ImTwitter } from "react-icons/im";
@@ -14,8 +15,8 @@ const ProvidersList = ({ providers }: ProvidersListProps) => {
     <div className="mt-4 border rounded-lg px-5 py-5 w-full sm:max-w-[400px] sm:mx-auto">
       {Object.values(providers).map((provider) => (
         <div key={provider.name} className="first:mb-4">
-          <button
-            className="py-3 border rounded-lg font-[500] w-full flex items-center justify-center text-gray-700 hover:border-gray-400 transition-all duration-500 px-5"
+          <Button
+            className="!flex items-center"
             onClick={() => SignIntoProvider(provider.id, { callbackUrl: "/" })}
           >
             Sign in with {provider.id === "twitter" ? "Twitter" : provider.name}
@@ -29,7 +30,7 @@ const ProvidersList = ({ providers }: ProvidersListProps) => {
                 <FcGoogle size={20} />
               </span>
             )}
-          </button>
+          </Button>
         </div>
       ))}
     </div>
