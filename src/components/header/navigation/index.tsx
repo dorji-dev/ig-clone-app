@@ -1,9 +1,10 @@
 "use client";
 
-import { HEADER_NAV_DATA, useTailwindMediaQuery } from "@lib/data";
 import { Tooltip, Button } from "antd";
 import React from "react";
 import clsx from "clsx";
+import { useTailwindMediaQuery } from "@lib/hooks";
+import { HEADER_NAV_DATA } from "@lib/constants";
 
 const Navigation = () => {
   const { mediaMatches: isAbove768 } = useTailwindMediaQuery("768");

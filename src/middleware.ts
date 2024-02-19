@@ -1,11 +1,23 @@
-import { withAuth } from "next-auth/middleware";
+import { NextRequest, NextResponse } from "next/server";
+import { getLoggedInUser } from "./services";
+import { AUTH_COOKIE_NAME } from "./lib/constants/auth.constants";
 
-export default withAuth({
-  // must match the pages config of [...nextauth] -> route.ts
-  pages: {
-    signIn: "/auth/signin",
-  },
-});
+const authRoutes = ["/auth/signin", "/auth/signup"];
+
+export default async function middleware(request: NextRequest) {
+  const idToken = request.cookies.get(AUTH_COOKIE_NAME)?.value ?? "";
+  const pathName = request.nextUrl.pathname;
+  try {
+    await getLoggedInUser(idToken);
+    if (authRoutes.includes(pathName)) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+  } catch (err) {
+    if (!authRoutes.includes(pathName)) {
+      return NextResponse.redirect(new URL("/auth/signin", request.url));
+    }
+  }
+}
 
 export const config = {
   /*

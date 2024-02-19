@@ -1,5 +1,3 @@
-import { BuiltInProviderType } from "next-auth/providers/index";
-import { LiteralUnion, ClientSafeProvider } from "next-auth/react";
 import { ReactNode } from "react";
 import {
   TAILWIND_2XL,
@@ -16,10 +14,6 @@ export interface ChildrenProp {
 export type ProviderProps = ChildrenProp;
 export type LayoutProps = ChildrenProp;
 export type TemplateProps = ChildrenProp;
-export type NextAuthProviders = Record<
-  LiteralUnion<BuiltInProviderType, string>,
-  ClientSafeProvider
->;
 export type ClassNameProp = {
   className: string;
 };
@@ -35,3 +29,9 @@ export type HeaderNavData = {
   onClick: () => void;
   icon: IconType;
 }[];
+export type EmailPassword = {
+  email: string;
+  password: string;
+}
+
+

@@ -7,6 +7,8 @@ import { MdOutlineFeaturedPlayList } from "react-icons/md";
 import { TbSearch } from "react-icons/tb";
 import { HeaderNavData } from "../models";
 
+export type FETCH_METHODS = "POST" | "GET" | "DELETE" | "PATCH" | "PUT";
+
 export const HEADER_NAV_DATA: HeaderNavData = [
   {
     title: "Home",

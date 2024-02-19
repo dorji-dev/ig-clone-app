@@ -1,11 +1,7 @@
-import { useRouter } from "next/navigation";
+"use client"
 
-export default async function Home() {
-  const data = await fetch('https://firestore.googleapis.com/v1/projects/instagram-clone-281d9/databases', {
-    method: "GET"
-  })
-  console.log(data)
-
+export default function Home() {
+  
   return (
     <main className="flex flex-col items-center justify-between p-24">
       

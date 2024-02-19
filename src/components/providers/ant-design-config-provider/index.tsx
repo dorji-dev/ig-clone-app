@@ -14,7 +14,7 @@ const AntDesignConfigProvider = ({ children }: ChildrenProp) => {
       Tooltip: {
         fontSize: 12,
         padding: 30
-      }
+      },
     }
   }}>{children}</ConfigProvider>;
 };
