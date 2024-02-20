@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import {
+  FETCH_METHODS,
   TAILWIND_2XL,
   TAILWIND_LARGE,
   TAILWIND_MEDIUM,
@@ -32,6 +33,13 @@ export type HeaderNavData = {
 export type EmailPassword = {
   email: string;
   password: string;
+}
+export type FetchArguments<BodyType> = {
+  url: string,
+  method: FETCH_METHODS,
+  body: BodyType,
+  headers?: {[index: string]: string},
+  nextOptions?: NextFetchRequestConfig | undefined
 }
 
 

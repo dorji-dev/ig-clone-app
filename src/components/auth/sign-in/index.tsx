@@ -13,7 +13,7 @@ const SignIn = () => {
   const [isPending, startTransition] = useTransition();
   const [api, contextHolder] = notification.useNotification();
 
-  const handleSignUp = async (email: string, password: string) => {
+  const handleSignIn = async (email: string, password: string) => {
     startTransition(async () => {
       const res = await signIn(email, password);
       if (res?.status === "success") {
@@ -21,8 +21,8 @@ const SignIn = () => {
       } else {
         res?.errorMessage &&
           api.error({
-            message: AUTH_ERROR_MAPPINGS?.[res?.errorMessage].title,
-            description: AUTH_ERROR_MAPPINGS?.[res?.errorMessage].description,
+            message: AUTH_ERROR_MAPPINGS?.[res?.errorMessage]?.title ?? res?.errorMessage,
+            description: AUTH_ERROR_MAPPINGS?.[res?.errorMessage]?.description ?? '',
             className: "!p-[20px] !shadow-main_shadow rounded-[8px]",
           });
       }
@@ -35,7 +35,7 @@ const SignIn = () => {
       <h2 className="text-sm my-5 font-bold text-gray-400">SIGN IN</h2>
       <AuthForm
         submitButtonLabel="Sign in"
-        onSubmit={handleSignUp}
+        onSubmit={handleSignIn}
         disableSubmitButton={isPending}
       />
       <Link href="/auth/signup" className="text-primary hover:underline">

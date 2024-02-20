@@ -7,6 +7,7 @@ const authRoutes = ["/auth/signin", "/auth/signup"];
 export default async function middleware(request: NextRequest) {
   const idToken = request.cookies.get(AUTH_COOKIE_NAME)?.value ?? "";
   const pathName = request.nextUrl.pathname;
+
   try {
     await getLoggedInUser(idToken);
     if (authRoutes.includes(pathName)) {

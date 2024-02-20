@@ -1,9 +1,9 @@
 "use server";
 
-import { fetchHelper } from "../helpers/request-helper";
+import { nodeFetch } from "../helpers/node-fetch-helper";
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_NAME } from "../lib/constants/auth.constants";
-import { SignUpResponse } from "../lib/models/auth.model";
+import { SignUpResponse, SignInResponse } from "../lib/models/auth.model";
 import { ServerActionResponse } from "../lib/models/server-action.model";
 import { AUTH_BASE_API_URL } from "@lib/constants";
 
@@ -22,11 +22,11 @@ export async function signIn(
     password,
   };
   try {
-    const response = await fetchHelper<SignUpResponse>(
-      `${AUTH_BASE_API_URL}/accounts:signInWithPassword?key=${process.env.NEXT_PUBLIC_FIREBASE_WEB_API_KEY}`,
-      "POST",
-      bodyPayload
-    );
+    const response = await nodeFetch<SignInResponse>({
+      url: `${AUTH_BASE_API_URL}/accounts:signInWithPassword?key=${process.env.NEXT_PUBLIC_FIREBASE_WEB_API_KEY}`,
+      method: "POST",
+      body: bodyPayload,
+    });
     cookies().set(AUTH_COOKIE_NAME, response.idToken, {
       secure: false,
       maxAge: 36000,
@@ -57,11 +57,11 @@ export async function signUp(
     password,
   };
   try {
-    const response = await fetchHelper<SignUpResponse>(
-      `${AUTH_BASE_API_URL}/accounts:signUp?key=${process.env.NEXT_PUBLIC_FIREBASE_WEB_API_KEY}`,
-      "POST",
-      bodyPayload
-    );
+    const response = await nodeFetch<SignUpResponse>({
+      url: `${AUTH_BASE_API_URL}/accounts:signUp?key=${process.env.NEXT_PUBLIC_FIREBASE_WEB_API_KEY}`,
+      method: "POST",
+      body: bodyPayload,
+    });
     cookies().set(AUTH_COOKIE_NAME, response.idToken, {
       secure: false,
       maxAge: 36000,
@@ -77,4 +77,5 @@ export async function signUp(
     };
   }
 }
+
 export async function signOut() {}

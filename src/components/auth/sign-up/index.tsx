@@ -20,8 +20,8 @@ const SignUp = () => {
         router.push("/");
       } else {
         res?.errorMessage && api.error({
-          message: AUTH_ERROR_MAPPINGS?.[res?.errorMessage].title,
-          description: AUTH_ERROR_MAPPINGS?.[res?.errorMessage].description,
+          message: AUTH_ERROR_MAPPINGS?.[res?.errorMessage]?.title ?? res?.errorMessage,
+          description: AUTH_ERROR_MAPPINGS?.[res?.errorMessage]?.description ?? '',
           className: "!p-[20px] !shadow-main_shadow rounded-[8px]",
         });
       }
