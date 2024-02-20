@@ -1,7 +1,8 @@
-import { LayoutProps } from "@lib/data";
+import { LayoutProps } from "@lib/models";
 import { DM_Sans } from "next/font/google";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import "../globals.css";
+import "../../stylesheets/globals.css";
+import "../../stylesheets/cssgram.css";
 import AntDesignConfigProvider from "@component/providers/ant-design-config-provider";
 import { VscLinkExternal } from "react-icons/vsc";
 import Image from "next/image";

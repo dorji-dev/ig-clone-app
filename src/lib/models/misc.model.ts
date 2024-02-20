@@ -37,7 +37,7 @@ export type EmailPassword = {
 export type FetchArguments<BodyType> = {
   url: string,
   method: FETCH_METHODS,
-  body: BodyType,
+  body?: BodyType,
   headers?: {[index: string]: string},
   nextOptions?: NextFetchRequestConfig | undefined
 }

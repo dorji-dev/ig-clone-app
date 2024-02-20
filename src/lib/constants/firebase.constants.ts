@@ -1,1 +1,1 @@
-export const FIRESTORE_BASE_API_URL = "https://firestore.googleapis.com/v1";
+export {}

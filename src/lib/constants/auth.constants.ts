@@ -1,5 +1,4 @@
 export const AUTH_COOKIE_NAME = "firebase_cookie";
-export const AUTH_BASE_API_URL = "https://identitytoolkit.googleapis.com/v1";
 export const AUTH_ERROR_MAPPINGS = {
   EMAIL_EXISTS: {
     title: "Email already exists",

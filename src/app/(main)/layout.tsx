@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import "../globals.css";
-import { LayoutProps } from "@lib/data";
+import "../../stylesheets/globals.css";
+import "../../stylesheets/cssgram.css"
+import { LayoutProps } from "@lib/models";
 import Header from "@component/header";
 import AntDesignConfigProvider from "@component/providers/ant-design-config-provider";
 
@@ -23,7 +24,7 @@ export default function RootLayout({ children }: LayoutProps) {
         <AntdRegistry>
           <AntDesignConfigProvider>
             <Header />
-            {children}
+            <div className="mt-[94px]">{children}</div>
           </AntDesignConfigProvider>
         </AntdRegistry>
       </body>

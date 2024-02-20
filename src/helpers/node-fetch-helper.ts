@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { AUTH_COOKIE_NAME, FETCH_METHODS } from "../lib/constants";
+import { AUTH_COOKIE_NAME } from "../lib/constants";
 import { FetchArguments } from "@lib/models";
 
 // Had to make separate fetch for node since the way to access cookie is different between server and client
@@ -20,9 +20,9 @@ export const nodeFetch = async <ResponseType, BodyType = {}>(
   const requestHeaders: { [index: string]: string } = {
     ...fetchArgs.headers,
   };
-  // if (userTokenId) {
-  //   requestHeaders["Authorization"] = `Bearer ${userTokenId}`;
-  // }
+  if (userTokenId) {
+    requestHeaders["Authorization"] = `Bearer ${userTokenId}`;
+  }
   const response = await fetch(fetchArgs.url, {
     method: fetchArgs.method,
     body: JSON.stringify(fetchArgs.body),
@@ -30,7 +30,11 @@ export const nodeFetch = async <ResponseType, BodyType = {}>(
     next: fetchArgs.nextOptions,
   });
   if (response.status === 200) {
-    return response.json();
+    return await response.json();
+  } else if (response.status === 404 || response.status === 401) {
+    return Promise.reject({
+      statusCode: response.status,
+    });
   } else {
     // await before response.json() because it returns a promise, else you won't get the resolved error object in
     // the catch callback

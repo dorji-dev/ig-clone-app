@@ -23,7 +23,7 @@
       "@lib/hooks": ["./src/lib/hooks"],
       "@lib/models": ["./src/lib/models"],
       "@lib/utils": ["./src/lib/utils"],
-      "@lib/services": ["./src/services"],
+      "@lib/services/*": ["./src/services/*"],
       "@lib/actions": ["./src/actions"],
     }
   },

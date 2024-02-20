@@ -1,5 +1,5 @@
 import { getCookie } from "@lib/utils";
-import { AUTH_COOKIE_NAME, FETCH_METHODS } from "../lib/constants";
+import { AUTH_COOKIE_NAME } from "../lib/constants";
 import { FetchArguments } from "@lib/models";
 
 // Had to make separate fetch for node since the way to access cookie is different between server and client

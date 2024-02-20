@@ -30,3 +30,4 @@ export const getCookie = (name: string) => {
   });
   return cookie[name];
 };
+

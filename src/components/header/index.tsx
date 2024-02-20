@@ -1,4 +1,4 @@
-import { ClassNameProp } from "@lib/data";
+import { ClassNameProp } from "@lib/models";
 import { clsx } from "clsx";
 import Logo from "./logo";
 import Search from "./search";

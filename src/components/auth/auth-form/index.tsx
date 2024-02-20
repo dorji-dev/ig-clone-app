@@ -1,4 +1,4 @@
-import { EmailPassword } from "@lib/data";
+import { EmailPassword } from "@lib/models";
 import { Button, Form, Input } from "antd";
 import { MdOutlineLock, MdOutlineMailOutline } from "react-icons/md";
 

@@ -1,4 +1,4 @@
-import { ChildrenProp } from "@lib/data";
+import { ChildrenProp } from "@lib/models";
 import { ConfigProvider } from "antd";
 
 const AntDesignConfigProvider = ({ children }: ChildrenProp) => {

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getLoggedInUser } from "./services";
-import { AUTH_COOKIE_NAME } from "./lib/constants/auth.constants";
+import {
+  AUTH_COOKIE_NAME,
+} from "./lib/constants/auth.constants";
 
 const authRoutes = ["/auth/signin", "/auth/signup"];
 
@@ -9,11 +10,24 @@ export default async function middleware(request: NextRequest) {
   const pathName = request.nextUrl.pathname;
 
   try {
-    await getLoggedInUser(idToken);
-    if (authRoutes.includes(pathName)) {
+    const response = await fetch(
+      `${process.env.AUTH_BASE_API_URL}/accounts:lookup?key=${process.env.NEXT_PUBLIC_FIREBASE_WEB_API_KEY}`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          idToken,
+        }),
+      }
+    );
+    if (response.status === 200 && authRoutes.includes(pathName)) {
+      // authenticated but on auth pages
       return NextResponse.redirect(new URL("/", request.url));
+    } else if (response.status !== 200 && !authRoutes.includes(pathName)) {
+      // unauthenticated but on protected pages
+      return NextResponse.redirect(new URL("/auth/signin", request.url));
     }
   } catch (err) {
+    // unauthenticated but on protected pages
     if (!authRoutes.includes(pathName)) {
       return NextResponse.redirect(new URL("/auth/signin", request.url));
     }
