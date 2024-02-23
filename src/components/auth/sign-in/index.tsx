@@ -1,12 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import AuthForm from "../auth-form";
 import { useTransition } from "react";
 import { signIn } from "@lib/actions";
-import { useRouter } from "next/navigation";
 import { notification } from "antd";
 import { AUTH_ERROR_MAPPINGS } from "@lib/constants";
+import { Link, useRouter } from "@router/customized";
 
 const SignIn = () => {
   const router = useRouter();

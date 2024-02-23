@@ -3,9 +3,11 @@ import { DM_Sans } from "next/font/google";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import "../../stylesheets/globals.css";
 import "../../stylesheets/cssgram.css";
+import "../../stylesheets/nprogress.css";
 import AntDesignConfigProvider from "@component/providers/ant-design-config-provider";
 import { VscLinkExternal } from "react-icons/vsc";
 import Image from "next/image";
+import { HandleOnComplete } from "@router/customized";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -19,6 +21,7 @@ const AuthLayout = ({ children }: LayoutProps) => {
         <div className="flex flex-col justify-center items-center h-screen">
           <AntdRegistry>
             <AntDesignConfigProvider>
+              <HandleOnComplete />
               <div className="flex items-center flex-col overflow-y-auto px-5 text-center py-10">
                 <div className="bg-white rounded-lg shadow-mainShadow p-8 sm:p-[50px]">
                   <Image

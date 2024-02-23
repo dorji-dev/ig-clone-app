@@ -2,7 +2,7 @@
 
 import EmojiPicker from "@component/emoji-picker";
 import { Post } from "@lib/models";
-import Link from "next/link";
+import {Link} from "@router/customized";
 import { useState } from "react";
 import Image from "next/image";
 import { BiDotsHorizontalRounded } from "react-icons/bi";

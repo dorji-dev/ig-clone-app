@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import "../../stylesheets/globals.css";
-import "../../stylesheets/cssgram.css"
+import "../../stylesheets/cssgram.css";
+import "../../stylesheets/nprogress.css";
 import { LayoutProps } from "@lib/models";
 import Header from "@component/header";
 import AntDesignConfigProvider from "@component/providers/ant-design-config-provider";
+import { HandleOnComplete } from "@router/customized";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -23,6 +25,7 @@ export default function RootLayout({ children }: LayoutProps) {
       <body className={dmSans.className}>
         <AntdRegistry>
           <AntDesignConfigProvider>
+            <HandleOnComplete />
             <Header />
             <div className="mt-[94px]">{children}</div>
           </AntDesignConfigProvider>

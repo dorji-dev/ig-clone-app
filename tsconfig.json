@@ -25,6 +25,8 @@
       "@lib/utils": ["./src/lib/utils"],
       "@lib/services/*": ["./src/services/*"],
       "@lib/actions": ["./src/actions"],
+      "nprogress": ["./src/lib/nprogress"],
+      "@router/customized": ["./src/lib/custom-router"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
