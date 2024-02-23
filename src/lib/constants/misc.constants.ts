@@ -18,7 +18,7 @@ export const HEADER_NAV_DATA: HeaderNavData = [
   },
   {
     title: "Features",
-    style: "",
+    style: "!flex",
     icon: MdOutlineFeaturedPlayList,
   },
   {
@@ -43,7 +43,7 @@ export const HEADER_NAV_DATA: HeaderNavData = [
   },
   {
     title: "Notification",
-    style: "",
+    style: "!flex",
     icon: IoMdNotificationsOutline,
   },
 ];
