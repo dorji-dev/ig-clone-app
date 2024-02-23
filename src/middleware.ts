@@ -1,13 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import {
-  AUTH_COOKIE_NAME,
-} from "./lib/constants/auth.constants";
+import { AUTH_COOKIE_NAME } from "./lib/constants/auth.constants";
 
 const authRoutes = ["/auth/signin", "/auth/signup"];
 
 export default async function middleware(request: NextRequest) {
   const idToken = request.cookies.get(AUTH_COOKIE_NAME)?.value ?? "";
   const pathName = request.nextUrl.pathname;
+  let nextResponse = NextResponse.next();
 
   try {
     const response = await fetch(
@@ -21,17 +20,27 @@ export default async function middleware(request: NextRequest) {
     );
     if (response.status === 200 && authRoutes.includes(pathName)) {
       // authenticated but on auth pages
-      return NextResponse.redirect(new URL("/", request.url));
+      nextResponse = NextResponse.redirect(new URL("/", request.url));
     } else if (response.status !== 200 && !authRoutes.includes(pathName)) {
       // unauthenticated but on protected pages
-      return NextResponse.redirect(new URL("/auth/signin", request.url));
+      nextResponse = NextResponse.redirect(
+        new URL("/auth/signin", request.url)
+      );
+      nextResponse.cookies.delete(AUTH_COOKIE_NAME); // remove cookie
+    } else if (response.status !== 200) {
+      // unauthenticated but on auth pages
+      nextResponse.cookies.delete(AUTH_COOKIE_NAME); // remove cookie
     }
   } catch (err) {
     // unauthenticated but on protected pages
     if (!authRoutes.includes(pathName)) {
-      return NextResponse.redirect(new URL("/auth/signin", request.url));
+      nextResponse = NextResponse.redirect(
+        new URL("/auth/signin", request.url)
+      );
+      nextResponse.cookies.delete(AUTH_COOKIE_NAME); // remove cookie
     }
   }
+  return nextResponse;
 }
 
 export const config = {
