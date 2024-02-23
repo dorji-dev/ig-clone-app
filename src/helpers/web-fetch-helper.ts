@@ -34,8 +34,14 @@ export const webFetch = async <ResponseType, BodyType = {}>(
   if (response.status === 200) {
     return response.json();
   } else {
-    // await before response.json() because it returns a promise, else you won't get the resolved error object in
-    // the catch callback
-    return Promise.reject(await response.json());
+    let errorObject;
+    try {
+      // if errored response is JSON parsable, return the object as it is
+      errorObject = await response.json();
+    } catch (_) {
+      // else return null
+      errorObject = null;
+    }
+    return Promise.reject(errorObject);
   }
 };

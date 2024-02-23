@@ -5,6 +5,7 @@ import { FetchArguments } from "@lib/models";
 // Had to make separate fetch for node since the way to access cookie is different between server and client
 // In a normal application with custom backend, one fetch will suffice
 // Current application makes use of firebase rest api and server actions
+
 /**
  * Wrapper for node `fetch` that handles promise rejection based on response status.
  * Since the application uses firebase rest api, need to pass userTokenId from request cookie
@@ -30,14 +31,16 @@ export const nodeFetch = async <ResponseType, BodyType = {}>(
     next: fetchArgs.nextOptions,
   });
   if (response.status === 200) {
-    return await response.json();
-  } else if (response.status === 404 || response.status === 401) {
-    return Promise.reject({
-      statusCode: response.status,
-    });
+    return response.json();
   } else {
-    // await before response.json() because it returns a promise, else you won't get the resolved error object in
-    // the catch callback
-    return Promise.reject(await response.json());
+    let errorObject;
+    try {
+      // if errored response is JSON parsable, return the object as it is
+      errorObject = await response.json();
+    } catch (_) {
+      // else return null
+      errorObject = null;
+    }
+    return Promise.reject(errorObject);
   }
 };
