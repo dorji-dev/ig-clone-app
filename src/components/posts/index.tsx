@@ -7,7 +7,7 @@ const PostList = async () => {
   const postsResponse = await getPosts();
 
   return (
-    <div className="sm:max-w-lg md:max-w-xl mx-auto">
+    <>
       {postsResponse ? (
         postsResponse.documents.map((post) => (
           <div key={post.name} className="mb-6">
@@ -17,7 +17,7 @@ const PostList = async () => {
       ) : (
         <NoPostContent />
       )}
-    </div>
+    </>
   );
 };
 

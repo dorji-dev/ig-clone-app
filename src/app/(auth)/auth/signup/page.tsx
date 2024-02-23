@@ -1,5 +1,10 @@
 import SignUp from '@component/auth/sign-up'
-import React from 'react'
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Signup',
+  description: 'Signup to start sharing your best moments',
+}
 
 const SignUpPage = () => {
   return (
