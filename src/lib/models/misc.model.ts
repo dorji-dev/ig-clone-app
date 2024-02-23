@@ -25,21 +25,30 @@ export type TailwindBreakPoints =
   | typeof TAILWIND_XL
   | typeof TAILWIND_2XL;
 export type HeaderNavData = {
-  title: string;
+  title: HeaderNavTitle;
   style: string;
-  onClick: () => void;
   icon: IconType;
 }[];
+export type HeaderNavDataWithAction = HeaderNavData[number] & { action: () => void };
 export type EmailPassword = {
   email: string;
   password: string;
-}
+};
 export type FetchArguments<BodyType> = {
-  url: string,
-  method: FETCH_METHODS,
-  body?: BodyType,
-  headers?: {[index: string]: string},
-  nextOptions?: NextFetchRequestConfig | undefined
-}
-
-
+  url: string;
+  method: FETCH_METHODS;
+  body?: BodyType;
+  headers?: { [index: string]: string };
+  nextOptions?: NextFetchRequestConfig | undefined;
+};
+export type HeaderNavTitle =
+  | "Home"
+  | "Features"
+  | "Search"
+  | "Messages"
+  | "Create"
+  | "Explore"
+  | "Notification";
+export type HeaderNavActions = {
+  [K in HeaderNavTitle]: () => void;
+};
