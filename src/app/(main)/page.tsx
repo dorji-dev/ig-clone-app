@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="grid grid-cols-1 md:mx-auto lg:grid-cols-3 sm:px-[50px] md:px-[100px] lg:px-0 lg:max-w-5xl">
+    <main className="grid grid-cols-1 md:mx-auto lg:grid-cols-3 sm:px-[50px] md:px-[100px] lg:px-[20px] lg:max-w-5xl">
       <section className="col-span-1 lg:col-span-2">
         <PostList />
       </section>

@@ -2,7 +2,7 @@
 
 import EmojiPicker from "@component/emoji-picker";
 import { Post } from "@lib/models";
-import {Link} from "@router/customized";
+import { Link } from "@router/customized";
 import { useState } from "react";
 import Image from "next/image";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
@@ -14,6 +14,7 @@ import { BsEmojiSmile } from "react-icons/bs";
 import { POST_ACTIONS_DATA } from "../../../lib/constants/post.constants";
 import { Button, Tooltip } from "antd";
 import { useTailwindMediaQuery } from "@lib/hooks";
+import PostCardHeader from "./post-card-header";
 
 interface PostCardProps {
   post: Post;
@@ -36,7 +37,7 @@ const PostCard = ({ post }: PostCardProps) => {
       text: "hello buddy",
     },
     {
-      id: "34563456",
+      id: "34563wer456",
       userName: "dorji@",
       text: "hello buddy",
     },
@@ -54,32 +55,10 @@ const PostCard = ({ post }: PostCardProps) => {
         />
       )}
       {/* Header */}
-      <div className="flex items-center p-2 md:p-3">
-        <div className="flex items-center">
-          <Link
-            href={`/${post.fields?.username?.stringValue}`}
-            className="w-[40px] h-[40px] relative block"
-          >
-            <Image
-              className="rounded-full h-10 w-10 object-contain p-1 mr-3 border"
-              src={
-                post.fields?.userImage?.stringValue ?? "/images/placeholder.png"
-              }
-              alt="user-avatar"
-              fill
-            />
-          </Link>
-          <Link
-            href={`/${post.fields?.username?.stringValue}`}
-            className="font-bold ml-[12px]"
-          >
-            {post.fields?.username?.stringValue}
-          </Link>
-        </div>
-        <button className="ml-auto">
-          <BiDotsHorizontalRounded className="h-8 w-8" />
-        </button>
-      </div>
+      <PostCardHeader
+        userImage={post.fields?.userImage?.stringValue}
+        userName={post.fields?.username?.stringValue}
+      />
       {/* Post image */}
       <figure
         className={clsx(

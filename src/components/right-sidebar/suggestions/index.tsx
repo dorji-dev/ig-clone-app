@@ -15,12 +15,12 @@ const Suggestions = () => {
       username: "@sangay",
     },
     {
-      id: "34563456",
+      id: "34563wer456",
       image: "/images/default-user.png",
       username: "@tshering",
     },
     {
-      id: "34563456",
+      id: "3444563456",
       image: "/images/default-user.png",
       username: "@nima",
     },
