@@ -55,6 +55,7 @@ const Navigation = () => {
       ))}
       <Tooltip placement="bottom" title={isAbove768 ? "Profile" : ""}>
         <Button
+          onClick={() => router.push('/user/32463456')}
           shape="circle"
           type="text"
           className={clsx(

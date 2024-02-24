@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@router/customized";
 import Image from "next/image";
 
 function MiniProfile() {

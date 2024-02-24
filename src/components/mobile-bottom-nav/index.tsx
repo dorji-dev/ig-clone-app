@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "antd";
+import { Badge, Button } from "antd";
 
 import React from "react";
 import Image from "next/image";
@@ -13,7 +13,7 @@ const MobileBottomNav = () => {
   const router = useRouter();
 
   return (
-    <div className="md:hidden flex justify-between w-full border-solid border-0 border-t-[1px] border-gray-200  bg-white py-3 px-5 z-10 fixed bottom-0">
+    <div className="md:hidden flex justify-between w-full border-solid border-0 border-t-[1px] border-gray-200  bg-white py-4 px-5 z-10 fixed bottom-0">
       <Button
         shape="circle"
         type="text"
@@ -36,17 +36,16 @@ const MobileBottomNav = () => {
       >
         <BsPeople className="w-5 h-5" />
       </Button>
-      <Button
-        shape="circle"
-        type="text"
-        className="relative order-2 !flex justify-center items-center !h-auto !p-[5px]"
-        onClick={() => router.push("/direct/inbox")}
-      >
-        <span className="absolute -top-1 -right-1 text-xs w-4 h-4 rounded-full bg-red-500 flex items-center justify-center text-white z-10 animate-pulse">
-          3
-        </span>
-        <BiMessageRounded className="w-5 h-5" />
-      </Button>
+      <Badge count={10} className="order-2" offset={[-4, 4]}>
+        <Button
+          shape="circle"
+          type="text"
+          className="relative !flex justify-center items-center !h-auto !p-[5px]"
+          onClick={() => router.push("/direct/inbox")}
+        >
+          <BiMessageRounded className="w-5 h-5" />
+        </Button>
+      </Badge> 
       <Link href="/">
         <Image
           src="/images/default-user.png"

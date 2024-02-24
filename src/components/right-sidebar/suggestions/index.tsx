@@ -45,7 +45,7 @@ const Suggestions = () => {
               />
             </Link>
             <div className="flex-1 ml-4">
-              <Link href="hello" className="font-semibold">
+              <Link href="/hello" className="font-semibold">
                 {user.username}
               </Link>
             </div>
