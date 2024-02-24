@@ -33,18 +33,15 @@ const PostCard = ({ post }: PostCardProps) => {
       <figure
         className={clsx(
           post.fields?.imageFilter?.stringValue,
-          "max-h-[500px] overflow-hidden"
+          "h-[400px] relative overflow-hidden"
         )}
       >
         <Image
           className="object-cover"
-          width={800}
-          height={500}
+          fill
           placeholder="blur"
           blurDataURL={imagePlaceholder}
-          style={{ width: "100%", height: "auto" }}
-          sizes="(max-width: 767px) 100vw,
-                        (min-width: 768px) 70vw"
+          sizes="(max-width: 767px) 100vw, (min-width: 768px) 70vw"
           src={post.fields?.postImage?.stringValue ?? imagePlaceholder} // avoid errors on post upload: see ImageUpload component
           alt="post image"
         />
