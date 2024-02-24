@@ -10,9 +10,8 @@ import { FetchArguments } from "@lib/models";
  * Wrapper for node `fetch` that handles promise rejection based on response status.
  * Since the application uses firebase rest api, need to pass userTokenId from request cookie
  * as a bearer in the Authorization header.
- * @param url
- * @param options
- * @returns
+ * @param fetchArgs 
+ * @returns 
  */
 export const nodeFetch = async <ResponseType, BodyType = {}>(
   fetchArgs: FetchArguments<BodyType>

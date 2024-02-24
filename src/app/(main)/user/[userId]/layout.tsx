@@ -131,7 +131,9 @@ const UserProfileLayout = ({ children }: ChildrenProp) => {
         </section>
         <ProfileLayoutLinkTabs />
       </div>
-      {children}
+      <div className="bg-white shadow-mainShadow rounded-lg mx-2 md:mx-10 py-10 px-3 md:px-8 mt-7 mb-14 md:my-12">
+        {children}
+      </div>
     </div>
   );
 };

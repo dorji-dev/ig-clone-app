@@ -38,6 +38,8 @@ const PostCard = ({ post }: PostCardProps) => {
     },
   ];
 
+  const postId = post.name.split('/').pop();
+
   return (
     <div className="bg-white md:rounded-lg md:shadow-main_shadow relative">
       {/* Header */}
