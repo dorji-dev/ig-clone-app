@@ -1,3 +1,5 @@
+"use client";
+
 import { Link } from "@router/customized";
 import Image from "next/image";
 import { useState } from "react";
@@ -14,7 +16,10 @@ const PostCardHeader = ({ userImage, userName }: PostCardHeaderProps) => {
 
   return (
     <>
-      <PostOptionsModal open={showPostOptions} setOpenModal={setShowPostOptions} />
+      <PostOptionsModal
+        open={showPostOptions}
+        setOpenModal={setShowPostOptions}
+      />
       <div className="flex items-center p-2 md:p-3">
         <div className="flex items-center">
           <Link

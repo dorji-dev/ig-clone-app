@@ -1,4 +1,4 @@
-import { Posts } from "@lib/models";
+import { PostCommentsResponse, PostsResponse } from "@lib/models";
 import { nodeFetch } from "../helpers/node-fetch-helper";
 
 /**
@@ -6,7 +6,7 @@ import { nodeFetch } from "../helpers/node-fetch-helper";
  * @returns
  */
 export const getPosts = async () => {
-  return await nodeFetch<Posts>({
+  return await nodeFetch<PostsResponse>({
     url: `${process.env.FIRESTORE_BASE_API_URL}/documents/posts`,
     method: "GET",
   }).catch(() => {
@@ -15,8 +15,8 @@ export const getPosts = async () => {
 };
 
 export const getCommentsByPostId = async (postId: string) => {
-  return await nodeFetch<Posts>({
-    url: `${process.env.FIRESTORE_BASE_API_URL}/documents`,
+  return await nodeFetch<PostCommentsResponse>({
+    url: `${process.env.FIRESTORE_BASE_API_URL}/documents:runQuery`,
     method: "POST",
     body: {
       structuredQuery: {

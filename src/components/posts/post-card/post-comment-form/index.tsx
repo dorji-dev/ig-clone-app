@@ -1,3 +1,5 @@
+"use client";
+
 import EmojiPicker from "@component/emoji-picker";
 import { Button } from "antd";
 import React, { useState } from "react";
