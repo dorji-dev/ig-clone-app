@@ -5,11 +5,8 @@ import React from "react";
 import clsx from "clsx";
 import { useTailwindMediaQuery } from "@lib/hooks";
 import { HEADER_NAV_DATA } from "@lib/constants";
-import { IoPersonCircle } from "react-icons/io5";
-import {
-  HeaderNavActions,
-  HeaderNavDataWithAction,
-} from "@lib/models";
+import Image from "next/image";
+import { HeaderNavActions, HeaderNavDataWithAction } from "@lib/models";
 import { useRouter } from "@router/customized";
 
 const Navigation = () => {
@@ -55,14 +52,20 @@ const Navigation = () => {
       ))}
       <Tooltip placement="bottom" title={isAbove768 ? "Profile" : ""}>
         <Button
-          onClick={() => router.push('/user/32463456')}
+          onClick={() => router.push("/user/32463456")}
           shape="circle"
           type="text"
           className={clsx(
-            "!hidden md:!flex justify-center items-center !h-auto !p-2"
+            "!hidden md:!flex justify-center items-center !h-auto !p-1"
           )}
         >
-          <IoPersonCircle className="w-5 h-5" />
+          <Image
+            className="object-cover rounded-full border p-[2px]"
+            src="/images/default-user.png"
+            width={32}
+            height={32}
+            alt="current user"
+          />
         </Button>
       </Tooltip>
     </div>

@@ -1,28 +1,23 @@
 "use client";
 
-import EmojiPicker from "@component/emoji-picker";
 import { Post } from "@lib/models";
 import { Link } from "@router/customized";
-import { useState } from "react";
 import Image from "next/image";
-import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { imagePlaceholder } from "@lib/utils";
 import clsx from "clsx";
 import Moment from "react-moment";
 import moment from "moment";
-import { BsEmojiSmile } from "react-icons/bs";
 import { POST_ACTIONS_DATA } from "../../../lib/constants/post.constants";
 import { Button, Tooltip } from "antd";
 import { useTailwindMediaQuery } from "@lib/hooks";
 import PostCardHeader from "./post-card-header";
+import PostCommentForm from "./post-comment-form";
 
 interface PostCardProps {
   post: Post;
 }
 
 const PostCard = ({ post }: PostCardProps) => {
-  const [comment, setComment] = useState("");
-  const [showPicker, setShowPicker] = useState(false);
   const { mediaMatches: isAbove768 } = useTailwindMediaQuery("768");
 
   const postLikes = post.fields?.likes?.arrayValue?.values;
@@ -45,15 +40,6 @@ const PostCard = ({ post }: PostCardProps) => {
 
   return (
     <div className="bg-white md:rounded-lg md:shadow-main_shadow relative">
-      {/* show emoji picker */}
-      {showPicker && (
-        <EmojiPicker
-          onClose={() => setShowPicker(false)}
-          onSelect={(emoji) =>
-            setComment((prevComment) => prevComment + emoji.native)
-          }
-        />
-      )}
       {/* Header */}
       <PostCardHeader
         userImage={post.fields?.userImage?.stringValue}
@@ -143,31 +129,7 @@ const PostCard = ({ post }: PostCardProps) => {
         <div className="px-5 pb-4 pt-2 wordSpace block uppercase text-[10px] font-[500] text-gray-400">
           <Moment fromNow>{moment(postTimeStamp)?.toDate()}</Moment>
         </div>
-
-        {/* Input box */}
-        <form className="hidden border-t py-4 md:flex items-center px-5">
-          <button type="button" onClick={() => setShowPicker(true)}>
-            <BsEmojiSmile className="w-6 h-6" />
-          </button>
-          <input
-            className="flex-1 border-none outline-none placeholder:font-[500] placeholder:text-gray-400 mx-[10px] block"
-            type="text"
-            name="comment"
-            placeholder="Add a comment..."
-            id="comment"
-            value={comment}
-            autoComplete="off"
-            onChange={(e) => setComment(e.target.value)}
-          />
-          <Button
-            type="primary"
-            disabled={!comment?.trim()}
-            className="font-semibold text-primary disabled:text-primary/50"
-            htmlType="submit"
-          >
-            Post
-          </Button>
-        </form>
+        <PostCommentForm />
       </section>
     </div>
   );
