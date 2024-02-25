@@ -52,9 +52,18 @@ export type PostCommentsResponse = {
   };
 }[];
 
+export type PostActionTitle = "Like" | "Comment" | "Share" | "Bookmark";
+
 export type PostActions = {
-  title: "Like" | "Comment" | "Share" | "Bookmark";
+  title: PostActionTitle;
   style: string;
-  onClick: () => void;
   icon: IconType;
 }[];
+
+export type PostActionWithHandler = PostActions[number] & {
+  onClick: () => void;
+};
+
+export type PostActionHandlers = {
+  [K in PostActionTitle]: () => void;
+};
