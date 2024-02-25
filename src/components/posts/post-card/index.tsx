@@ -62,7 +62,9 @@ const PostCard = ({ post }: PostCardProps) => {
             </Link>
             {postCaption}
           </p>
-          <Suspense fallback={<div>Loading comments ...</div>}><PostComments postId={postId} /></Suspense>
+          <Suspense fallback={<div>Loading comments ...</div>}>
+            <PostComments postId={postId} />
+          </Suspense>
         </div>
         <PostCardTimeStamp postTimeStamp={postTimeStamp} />
         <PostCommentForm />
