@@ -28,7 +28,7 @@
       "nprogress": ["./src/lib/nprogress"],
       "@router/customized": ["./src/lib/custom-router"],
       "@state": ["./src/lib/state"],
-      "@next-revalidate": ["./next-revalidate"],
+      "@next-revalidate": ["./src/next-revalidate"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

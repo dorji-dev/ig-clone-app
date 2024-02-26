@@ -24,7 +24,7 @@ export const nodeFetch = async <ResponseType, BodyType = {}>(
     body: JSON.stringify(fetchArgs.body),
     headers: requestHeaders,
     next: fetchArgs.nextOptions,
-    cache: fetchArgs.cache,
+    cache: fetchArgs.cache,      
   });
 
   if (response.status === 200) {

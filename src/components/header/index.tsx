@@ -9,6 +9,7 @@ type HeaderProps = {
 };
 
 const Header = ({ className }: HeaderProps) => {
+
   return (
     <header
       className={clsx(

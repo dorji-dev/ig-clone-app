@@ -7,7 +7,6 @@ import clsx from "clsx";
 import React from "react";
 import { PostActionHandlers, PostActionWithHandler } from "@lib/models";
 import { useRouter } from "@router/customized";
-import { useGetCurrentUserQuery } from "@state";
 
 const PostActions = () => {
   const { mediaMatches: isAbove768 } = useTailwindMediaQuery("768");

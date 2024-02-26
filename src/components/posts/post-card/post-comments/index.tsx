@@ -1,4 +1,4 @@
-import { getCommentsByPostId } from "@lib/services/post.service";
+import { getCommentsByPostId } from "@lib/services/comment.service";
 import CurrentUserComment from "./current-user-comments";
 
 interface PostCommentsProps {

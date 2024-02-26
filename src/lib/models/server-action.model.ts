@@ -1,8 +1,12 @@
 import { AuthErrorKeys } from "./auth.model";
 
-export type ServerActionResponse = {
+export type GenericServerActionResponse<T = any> = {
   status: "success" | "error";
-  errorMessage: AuthErrorKeys | null;
+  errorMessage?: any;
+  data?: T;
 };
 
-export type AuthActionsResponse = ServerActionResponse;
+export type AuthActionsResponse = Omit<
+  GenericServerActionResponse,
+  "data" | "errorMessage"
+> & { errorMessage: AuthErrorKeys | null };

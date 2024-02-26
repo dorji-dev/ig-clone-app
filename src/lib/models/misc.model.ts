@@ -43,7 +43,7 @@ export type FetchArguments<BodyType> = {
   body?: BodyType;
   headers?: { [index: string]: string };
   nextOptions?:
-    | (Omit<NextFetchRequestConfig, "tags"> & { tags?: NextFetchTags })
+    | (Omit<NextFetchRequestConfig, "tags"> & { tags?: NextFetchTags[] })
     | undefined;
   cache?: RequestCache;
 };

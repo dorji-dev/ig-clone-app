@@ -67,7 +67,7 @@ const PostCard = ({ post }: PostCardProps) => {
           </Suspense>
         </div>
         <PostCardTimeStamp postTimeStamp={postTimeStamp} />
-        <PostCommentForm />
+        <PostCommentForm postId={postId} />
       </section>
     </div>
   );

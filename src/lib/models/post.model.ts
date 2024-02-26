@@ -1,17 +1,17 @@
 import { IconType } from "react-icons";
 
-interface FirebaseIntegerValue {
+export interface FirebaseIntegerValue {
   integerValue: string;
 }
-interface FirebaseTimeStampValue {
+export interface FirebaseTimeStampValue {
   timestampValue: string;
 }
 
-interface FirebaseStringValue {
+export interface FirebaseStringValue {
   stringValue: string;
 }
 
-interface FirebaseArrayValue {
+export interface FirebaseArrayValue {
   arrayValue: {
     values: FirebaseStringValue[];
   };
@@ -35,22 +35,6 @@ export interface Post {
     likes: FirebaseArrayValue;
   };
 }
-
-export type PostCommentsResponse = {
-  document: {
-    name: string;
-    fields: {
-      userImage: FirebaseStringValue;
-      parentColRef: FirebaseStringValue;
-      text: FirebaseStringValue;
-      postId: FirebaseStringValue;
-      userId: FirebaseStringValue;
-      likes: FirebaseArrayValue;
-      username: FirebaseStringValue;
-      timeStamp: FirebaseTimeStampValue;
-    };
-  };
-}[];
 
 export type PostActionTitle = "Like" | "Comment" | "Share" | "Bookmark";
 
