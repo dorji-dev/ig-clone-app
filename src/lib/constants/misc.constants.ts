@@ -7,6 +7,7 @@ import { MdOutlineFeaturedPlayList } from "react-icons/md";
 import { TbSearch } from "react-icons/tb";
 import { HeaderNavData } from "../models";
 
+export type NextFetchTags = 'Post' | 'Comment';
 
 export type FETCH_METHODS = "POST" | "GET" | "DELETE" | "PATCH" | "PUT";
 

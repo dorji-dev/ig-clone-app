@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import {
   FETCH_METHODS,
+  NextFetchTags,
   TAILWIND_2XL,
   TAILWIND_LARGE,
   TAILWIND_MEDIUM,
@@ -29,7 +30,9 @@ export type HeaderNavData = {
   style: string;
   icon: IconType;
 }[];
-export type HeaderNavDataWithAction = HeaderNavData[number] & { action: () => void };
+export type HeaderNavDataWithAction = HeaderNavData[number] & {
+  action: () => void;
+};
 export type EmailPassword = {
   email: string;
   password: string;
@@ -39,8 +42,10 @@ export type FetchArguments<BodyType> = {
   method: FETCH_METHODS;
   body?: BodyType;
   headers?: { [index: string]: string };
-  nextOptions?: NextFetchRequestConfig | undefined;
-  cache?: RequestCache
+  nextOptions?:
+    | (Omit<NextFetchRequestConfig, "tags"> & { tags?: NextFetchTags })
+    | undefined;
+  cache?: RequestCache;
 };
 export type HeaderNavTitle =
   | "Home"
