@@ -1,33 +1,35 @@
+"use client";
+
 import { PostCommentsResponse } from "@lib/models";
+import { useGetCurrentUserQuery } from "@state";
 
 interface CurrentUserCommentProps {
   postComments: PostCommentsResponse;
 }
 
 const CurrentUserComment = ({ postComments }: CurrentUserCommentProps) => {
-  const postComment = [
-    {
-      id: "234563456",
-      userName: "dorji@",
-      text: "hello buddy",
-    },
-    {
-      id: "34563wer456",
-      userName: "dorji@",
-      text: "hello buddy",
-    },
-  ];
+  const { data: currentUser, isLoading } = useGetCurrentUserQuery();
+
+  if (isLoading) {
+    return null;
+  }
+
+  const currentUserComments = postComments.filter(
+    (postComment) =>
+      postComment.document?.fields?.userId?.stringValue ===
+      currentUser?.users?.[0].localId
+  );
 
   return (
-    <div>
-      {postComment.length > 0 &&
-        postComment.map((comment) => (
-          <p className="mb-2" key={comment.id}>
-            <span className="font-bold mr-2">{comment.userName}</span>
-            <span>{comment.text}</span>
-          </p>
-        ))}
-    </div>
+    currentUserComments.length > 0 &&
+    currentUserComments.map((comment) => (
+      <p className="mb-2" key={comment.document.name}>
+        <span className="font-bold mr-2">
+          {comment.document.fields.username.stringValue}
+        </span>
+        <span>{comment.document.fields.text.stringValue}</span>
+      </p>
+    ))
   );
 };
 

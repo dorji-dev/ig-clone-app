@@ -40,6 +40,7 @@ export type FetchArguments<BodyType> = {
   body?: BodyType;
   headers?: { [index: string]: string };
   nextOptions?: NextFetchRequestConfig | undefined;
+  cache?: RequestCache
 };
 export type HeaderNavTitle =
   | "Home"

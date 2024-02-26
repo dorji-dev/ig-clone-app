@@ -29,7 +29,6 @@ export async function signIn(
     });
     cookies().set(AUTH_COOKIE_NAME, response.idToken, {
       secure: false,
-      maxAge: 36000,
     });
     return {
       status: "success",
@@ -65,7 +64,6 @@ export async function signUp(
     });
     cookies().set(AUTH_COOKIE_NAME, response.idToken, {
       secure: false,
-      maxAge: 36000,
     });
     return {
       status: "success",

@@ -2,10 +2,6 @@ import { cookies } from "next/headers";
 import { AUTH_COOKIE_NAME } from "../lib/constants";
 import { FetchArguments } from "@lib/models";
 
-// Had to make separate fetch for node since the way to access cookie is different between server and client
-// In a normal application with custom backend, one fetch will suffice
-// Current application makes use of firebase rest api and server actions
-
 /**
  * Wrapper for node `fetch` that handles promise rejection based on response status.
  * Since the application uses firebase rest api, need to pass userTokenId from request cookie
@@ -28,6 +24,7 @@ export const nodeFetch = async <ResponseType, BodyType = {}>(
     body: JSON.stringify(fetchArgs.body),
     headers: requestHeaders,
     next: fetchArgs.nextOptions,
+    cache: fetchArgs.cache,
   });
 
   if (response.status === 200) {

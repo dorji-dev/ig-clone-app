@@ -30,6 +30,7 @@ const PostCardHeader = ({ userImage, userName }: PostCardHeaderProps) => {
               className="rounded-full h-10 w-10 object-contain p-1 mr-3 border"
               src={userImage ?? "/images/placeholder.png"}
               alt="user-avatar"
+              sizes="(max-width: 767px) 100vw, (min-width: 768px) 70vw"
               fill
             />
           </Link>
