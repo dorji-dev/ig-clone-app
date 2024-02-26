@@ -14,7 +14,11 @@ const dmSans = DM_Sans({
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-export default function RootLayout({ children }: LayoutProps) {
+interface MainLayoutProps extends LayoutProps {
+  postModal: React.ReactNode;
+}
+
+export default function MainLayout({ children, postModal }: MainLayoutProps) {
   return (
     <html lang="en">
       <body className={dmSans.className}>
@@ -22,7 +26,10 @@ export default function RootLayout({ children }: LayoutProps) {
           <AntDesignConfigProvider>
             <HandleOnComplete />
             <Header />
-            <div className="mt-[94px] pb-[100px] md:pb-[50px]">{children}</div>
+            <div className="mt-[94px] pb-[100px] md:pb-[50px]">
+              {children}
+              {postModal}
+            </div>
             <MobileBottomNav />
           </AntDesignConfigProvider>
         </AntdRegistry>
