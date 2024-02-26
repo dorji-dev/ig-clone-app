@@ -3,13 +3,22 @@ import { useDispatch, useSelector, useStore } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
 import { baseApiService } from "./base-api-service";
 
+/**
+ * A helper function that determines if the app is running in production mode
+ * based on the value of the NODE_ENV environment variable.
+ *
+ * @returns {boolean} True if the app is running in production mode, false otherwise.
+ */
+const isProduction = () => process.env.NODE_ENV === "production";
+
 export const makeStore = () => {
   return configureStore({
     reducer: {
       [baseApiService.reducerPath]: baseApiService.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(baseApiService.middleware),
+      getDefaultMiddleware().concat(baseApiService.middleware),
+    devTools: !isProduction(),
   });
 };
 

@@ -8,6 +8,7 @@ import Header from "@component/header";
 import AntDesignConfigProvider from "@component/providers/ant-design-config-provider";
 import { HandleOnComplete } from "@router/customized";
 import MobileBottomNav from "@component/mobile-bottom-nav";
+import StoreProvider from "@component/providers/redux-provider";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -25,12 +26,14 @@ export default function MainLayout({ children, postModal }: MainLayoutProps) {
         <AntdRegistry>
           <AntDesignConfigProvider>
             <HandleOnComplete />
+            <StoreProvider>
             <Header />
             <div className="mt-[94px] pb-[100px] md:pb-[50px]">
               {children}
               {postModal}
             </div>
             <MobileBottomNav />
+            </StoreProvider>
           </AntDesignConfigProvider>
         </AntdRegistry>
       </body>

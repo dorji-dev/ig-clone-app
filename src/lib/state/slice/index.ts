@@ -1,1 +1,1 @@
-export * from './post-comment.slice';
+export * from './user.slice';
