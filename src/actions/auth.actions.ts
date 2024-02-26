@@ -4,7 +4,7 @@ import { nodeFetch } from "../helpers/node-fetch-helper";
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_NAME } from "../lib/constants/auth.constants";
 import { SignUpResponse, SignInResponse } from "../lib/models/auth.model";
-import { ServerActionResponse } from "../lib/models/server-action.model";
+import { AuthActionsResponse } from "../lib/models/server-action.model";
 
 /**
  * Sign in
@@ -15,7 +15,7 @@ import { ServerActionResponse } from "../lib/models/server-action.model";
 export async function signIn(
   email: string,
   password: string
-): Promise<ServerActionResponse | undefined> {
+): Promise<AuthActionsResponse | undefined> {
   const bodyPayload = {
     email,
     password,
@@ -23,7 +23,7 @@ export async function signIn(
   };
   try {
     const response = await nodeFetch<SignInResponse>({
-      url: `${process.env.AUTH_BASE_API_URL}/accounts:signInWithPassword?key=${process.env.NEXT_PUBLIC_FIREBASE_WEB_API_KEY}`,
+      url: `${process.env.NEXT_PUBLIC_AUTH_BASE_API_URL}/accounts:signInWithPassword?key=${process.env.NEXT_PUBLIC_FIREBASE_WEB_API_KEY}`,
       method: "POST",
       body: bodyPayload,
     });
@@ -51,7 +51,7 @@ export async function signIn(
 export async function signUp(
   email: string,
   password: string
-): Promise<ServerActionResponse | undefined> {
+): Promise<AuthActionsResponse | undefined> {
   const bodyPayload = {
     email,
     password,
@@ -59,7 +59,7 @@ export async function signUp(
   };
   try {
     const response = await nodeFetch<SignUpResponse>({
-      url: `${process.env.AUTH_BASE_API_URL}/accounts:signUp?key=${process.env.NEXT_PUBLIC_FIREBASE_WEB_API_KEY}`,
+      url: `${process.env.NEXT_PUBLIC_AUTH_BASE_API_URL}/accounts:signUp?key=${process.env.NEXT_PUBLIC_FIREBASE_WEB_API_KEY}`,
       method: "POST",
       body: bodyPayload,
     });
@@ -79,4 +79,14 @@ export async function signUp(
   }
 }
 
-export async function signOut() {}
+/**
+ * Sign out action
+ * @returns
+ */
+export async function signOut(): Promise<AuthActionsResponse | undefined> {
+  cookies().set(AUTH_COOKIE_NAME, "");
+  return {
+    status: "success",
+    errorMessage: null,
+  };
+}

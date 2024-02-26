@@ -4,3 +4,5 @@ export type ServerActionResponse = {
   status: "success" | "error";
   errorMessage: AuthErrorKeys | null;
 };
+
+export type AuthActionsResponse = ServerActionResponse;

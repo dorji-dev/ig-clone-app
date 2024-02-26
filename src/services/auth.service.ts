@@ -8,7 +8,7 @@ import { nodeFetch } from "../helpers/node-fetch-helper";
  */
 export const getLoggedInUser = async (idToken: string) => {
   return await nodeFetch<LoggedInUserResponse>({
-    url: `${process.env.AUTH_BASE_API_URL}/accounts:lookup?key=${process.env.NEXT_PUBLIC_FIREBASE_WEB_API_KEY}`,
+    url: `${process.env.NEXT_PUBLIC_AUTH_BASE_API_URL}/accounts:lookup?key=${process.env.NEXT_PUBLIC_FIREBASE_WEB_API_KEY}`,
     method: "POST",
     body: {
       idToken,

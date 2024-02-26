@@ -10,7 +10,7 @@ export default async function middleware(request: NextRequest) {
 
   try {
     const response = await fetch(
-      `${process.env.AUTH_BASE_API_URL}/accounts:lookup?key=${process.env.NEXT_PUBLIC_FIREBASE_WEB_API_KEY}`,
+      `${process.env.NEXT_PUBLIC_AUTH_BASE_API_URL}/accounts:lookup?key=${process.env.NEXT_PUBLIC_FIREBASE_WEB_API_KEY}`,
       {
         method: "POST",
         body: JSON.stringify({

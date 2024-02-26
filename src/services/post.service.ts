@@ -7,7 +7,7 @@ import { nodeFetch } from "../helpers/node-fetch-helper";
  */
 export const getPosts = async () => {
   return await nodeFetch<PostsResponse>({
-    url: `${process.env.FIRESTORE_BASE_API_URL}/documents/posts`,
+    url: `${process.env.NEXT_PUBLIC_FIRESTORE_BASE_API_URL}/documents/posts`,
     method: "GET",
   }).catch(() => {
     return null;
@@ -16,7 +16,7 @@ export const getPosts = async () => {
 
 export const getCommentsByPostId = async (postId: string) => {
   return await nodeFetch<PostCommentsResponse>({
-    url: `${process.env.FIRESTORE_BASE_API_URL}/documents:runQuery`,
+    url: `${process.env.NEXT_PUBLIC_FIRESTORE_BASE_API_URL}/documents:runQuery`,
     method: "POST",
     body: {
       structuredQuery: {

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 const SignInPage = () => {
-return <SignIn />;
+  return <SignIn />;
 };
 
 export default SignInPage;

@@ -1,4 +1,5 @@
-import ProfileLayoutLinkTabs from "@component/profile-layout/link-tabs";
+import ProfileLayoutLinkTabs from "@component/profile/link-tabs";
+import LogoutButton from "@component/profile/logout-button";
 import { ChildrenProp } from "@lib/models";
 import { Link } from "@router/customized";
 import { Button } from "antd";
@@ -47,9 +48,7 @@ const UserProfileLayout = ({ children }: ChildrenProp) => {
                   <Button className="text-center py-1 px-3 font-[600] border border-solid border-gray-200 rounded-md mr-2">
                     Edit profile
                   </Button>
-                  <Button type="text" className="mt-3 xs:mt-0 w-fit">
-                    Logout
-                  </Button>
+                  <LogoutButton />
                 </div>
               ) : (
                 <div>

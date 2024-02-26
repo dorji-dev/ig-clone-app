@@ -29,6 +29,7 @@ export const nodeFetch = async <ResponseType, BodyType = {}>(
     headers: requestHeaders,
     next: fetchArgs.nextOptions,
   });
+
   if (response.status === 200) {
     return response.json();
   } else {
