@@ -1,5 +1,5 @@
 import PostList from "@component/posts";
-import PostListSkeleton from "@component/posts/posts-skeleton";
+import PostListSkeleton from "@component/skeletons/posts-skeleton";
 import MiniProfile from "@component/right-sidebar/mini-profile";
 import Suggestions from "@component/right-sidebar/suggestions";
 import { Metadata } from "next";

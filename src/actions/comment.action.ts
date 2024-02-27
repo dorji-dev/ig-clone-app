@@ -6,8 +6,8 @@ import { nextRevalidateTag } from "@next-revalidate";
 
 /**
  * Action to add post comment
- * @param payload 
- * @returns 
+ * @param payload
+ * @returns
  */
 export const addComment = async (
   payload: AddCommentPayload
@@ -21,7 +21,7 @@ export const addComment = async (
         fields: payload,
       },
     });
-    nextRevalidateTag("Comment");
+    nextRevalidateTag(`Comment${payload.postId.stringValue}`);
     return {
       status: "success",
     };

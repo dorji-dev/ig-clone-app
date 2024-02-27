@@ -1,6 +1,6 @@
-import { NextFetchTags } from "@lib/constants";
+import { NextFetchTags } from "@lib/models";
 import { revalidateTag } from "next/cache";
 
-export const nextRevalidateTag = (tag: NextFetchTags) => {
+export const nextRevalidateTag = (tag: NextFetchTags<string>) => {
   revalidateTag(tag);   
 };

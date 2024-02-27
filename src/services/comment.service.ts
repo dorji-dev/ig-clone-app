@@ -24,7 +24,7 @@ export const getCommentsByPostId = async (postId: string) => {
       },
     },
     nextOptions: {
-      tags: ["Comment"],
+      tags: [`Comment${postId}`],
     },
   }).catch(() => {
     return null;

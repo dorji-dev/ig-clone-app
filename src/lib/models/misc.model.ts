@@ -1,7 +1,5 @@
 import { ReactNode } from "react";
 import {
-  FETCH_METHODS,
-  NextFetchTags,
   TAILWIND_2XL,
   TAILWIND_LARGE,
   TAILWIND_MEDIUM,
@@ -9,6 +7,8 @@ import {
   TAILWIND_XL,
 } from "../constants";
 import { IconType } from "react-icons";
+
+export type FETCH_METHODS = "POST" | "GET" | "DELETE" | "PATCH" | "PUT";
 
 export interface ChildrenProp {
   children: ReactNode;
@@ -37,13 +37,14 @@ export type EmailPassword = {
   email: string;
   password: string;
 };
+export type NextFetchTags<T extends string> = 'Post' | `Comment${T}`;
 export type FetchArguments<BodyType> = {
   url: string;
   method: FETCH_METHODS;
   body?: BodyType;
   headers?: { [index: string]: string };
   nextOptions?:
-    | (Omit<NextFetchRequestConfig, "tags"> & { tags?: NextFetchTags[] })
+    | (Omit<NextFetchRequestConfig, "tags"> & { tags?: NextFetchTags<string>[] })
     | undefined;
   cache?: RequestCache;
 };
@@ -58,3 +59,4 @@ export type HeaderNavTitle =
 export type HeaderNavActions = {
   [K in HeaderNavTitle]: () => void;
 };
+
