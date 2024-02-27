@@ -84,7 +84,7 @@ const PostCommentForm = ({ postId }: PostCommentFormProps) => {
         className="hidden border-t !py-4 md:flex items-center !px-5"
         onFinish={handleAddComment}
       >
-        <button type="button" onClick={() => setShowPicker(true)}>
+        <button aria-label="Select emoji" type="button" onClick={() => setShowPicker(true)}>
           <BsEmojiSmile className="w-6 h-6" />
         </button>
         <input
@@ -92,7 +92,6 @@ const PostCommentForm = ({ postId }: PostCommentFormProps) => {
           type="text"
           name="comment"
           placeholder="Add a comment..."
-          id="comment"
           value={comment}
           autoComplete="off"
           onChange={(e) => setComment(e.target.value)}

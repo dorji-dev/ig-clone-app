@@ -8,13 +8,13 @@ import Image from "next/image";
 const UserProfileLayout = ({ children }: ChildrenProp) => {
   return (
     <div className="pb-10">
-      <div className="bg-white shadow-mainShadow">
+      <div className="bg-white shadow-main_shadow">
         {/* profile meta-data */}
         <section className="flex py-5 md:py-10 px-5 justify-between sm:justify-center">
           <div className="mr-5 sm:mr-10">
             <div className="flex justify-center items-center flex-col sm:h-full">
-              {true ? (
-                <div className="w-[80px] sm:w-[150px] pt-[100%] relative">
+              <div className="w-[80px] sm:w-[150px] pt-[100%] relative">
+                {true ? (
                   <button className="rounded-full overflow-hidden h-full absolute inset-0">
                     <Image
                       className="object-cover rounded-full p-1 border border-solid border-gray-300 cursor-pointer"
@@ -25,17 +25,15 @@ const UserProfileLayout = ({ children }: ChildrenProp) => {
                       alt="avatar"
                     />
                   </button>
-                </div>
-              ) : (
-                <div className="w-[80px] sm:w-[150px] pt-[100%] relative">
+                ) : (
                   <Image
                     fill
                     className="w-full h-full object-cover rounded-full p-1 border border-solid border-gray-300 absolute inset-0"
                     src="/images/default-user.png"
                     alt="avatar"
                   />
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
           <div className="sm:ml-10 grow sm:grow-0 flex flex-col justify-between sm:py-3">
@@ -130,7 +128,7 @@ const UserProfileLayout = ({ children }: ChildrenProp) => {
         </section>
         <ProfileLayoutLinkTabs />
       </div>
-      <div className="bg-white shadow-mainShadow rounded-lg mx-2 md:mx-10 py-10 px-3 md:px-8 mt-7 mb-14 md:my-12">
+      <div className="bg-white shadow-main_shadow rounded-lg mx-2 md:mx-10 py-10 px-3 md:px-8 mt-7 mb-14 md:my-12">
         {children}
       </div>
     </div>

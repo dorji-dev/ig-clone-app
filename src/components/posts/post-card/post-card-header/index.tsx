@@ -38,7 +38,7 @@ const PostCardHeader = ({ userImage, userName }: PostCardHeaderProps) => {
             {userName}
           </Link>
         </div>
-        <button className="ml-auto" onClick={() => setShowPostOptions(true)}>
+        <button aria-label="Post options" className="ml-auto" onClick={() => setShowPostOptions(true)}>
           <BiDotsHorizontalRounded className="h-8 w-8" />
         </button>
       </div>

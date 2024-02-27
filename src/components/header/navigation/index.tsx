@@ -38,6 +38,7 @@ const Navigation = () => {
           title={isAbove768 ? navData.title : ""}
         >
           <Button
+            aria-label={navData.title}
             shape="circle"
             type="text"
             className={clsx(
@@ -52,6 +53,7 @@ const Navigation = () => {
       ))}
       <Tooltip placement="bottom" title={isAbove768 ? "Profile" : ""}>
         <Button
+          aria-label="Profile"
           onClick={() => router.push("/user/32463456")}
           shape="circle"
           type="text"

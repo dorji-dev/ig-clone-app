@@ -34,6 +34,7 @@ const PostActions = () => {
           title={isAbove768 ? actionData.title : ""}
         >
           <Button
+            aria-label={actionData.title}
             shape="circle"
             type="dashed"
             className={clsx(
