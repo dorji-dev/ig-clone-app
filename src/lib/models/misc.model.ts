@@ -59,4 +59,8 @@ export type HeaderNavTitle =
 export type HeaderNavActions = {
   [K in HeaderNavTitle]: () => void;
 };
+export type ErrorBoundaryFallbackProps = {
+  error: Error & { digest?: string }
+  reset: () => void
+}
 
